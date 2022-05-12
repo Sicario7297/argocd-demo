@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'jenkins-slave'
+      label 'kubeagent'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
@@ -50,7 +50,7 @@ spec:
       }
       steps {
         container('tools') {
-          sh "git clone https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/alexmt/argocd-demo-deploy.git"
+          sh "git clone https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/Sicario7297/argocd-demo-deploy.git"
           sh "git config --global user.email 'ci@ci.com'"
 
           dir("argocd-demo-deploy") {
